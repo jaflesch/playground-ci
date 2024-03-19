@@ -20,11 +20,6 @@
     "dist": "git add dist/",
     "precommit-msg": "echo '..:: Pre-commit checks ::..' && exit 0"
   },
-  "pre-commit": [
-    "precommit-msg",
-    "tsc",
-    "dist"
-  ],
   "keywords": [
     "pokemon",
     "pokeapi",
