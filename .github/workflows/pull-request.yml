@@ -7,10 +7,6 @@ on:
     paths:
       - src/**
 
-  workflow_dispatch:
-    branches:
-      - main
-
 jobs:
   pull-request:
     name: 'Pull Request'
@@ -31,7 +27,7 @@ jobs:
 
       # Run linting
       - name: Lint
-        run: npm test
+        run: npm run lint
 
       # Run tests
       - name: Unit Test
