@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2015",
+    "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "declaration": true,
+    "strictNullChecks": true
+  },
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": ["**/node_modules", "dist", "**/__tests__"],
+    "excludeFiles": []
+  },
+  "include": ["src/**/*", ".eslintrc.js"],
+  "exclude": ["node_modules", "src/__tests__/**/*.spec.ts"]
+}
