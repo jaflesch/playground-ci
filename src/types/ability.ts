@@ -13,7 +13,7 @@ import { Effect, Name, NamedAPIResource, VerboseEffect } from './common';
  * @property effect_entries - The effect of this ability listed in different languages.
  * @property effect_changes - The list of previous effects this ability has had across version groups.
  * @property flavor_text_entries - The flavor text of this ability listed in different languages.
- * @property pokemon - A list of Pokémon that could potentially have this ability.
+ * @property pokemon - A list of Pokémon that could potentially have this ability.   
  */
 export type Ability = {
   id: number;
