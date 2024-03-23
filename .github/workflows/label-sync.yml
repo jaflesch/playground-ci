@@ -8,14 +8,19 @@ on:
       - .github/labels.yml
   workflow_dispatch:
 
+permissions:
+  issues: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: micnncim/action-label-syncer@v1
         with:
-          manifest: .github/labels.yml
-          repository: |
-            jaflesch/playground-ci
+          sparse-checkout: .github/labels.yml
+      - uses: EndBug/label-sync@v2
+        with:
+          config-file: .github/labels.yml
           token: ${{ secrets.GITHUB_TOKEN }}
+          delete-other-labels: false
+          #dry-run: true
