@@ -1,0 +1,68 @@
+---
+name: 🛠️ Feature Request
+description: Suggest an idea to help us improve this project
+title: "[Feature]: "
+labels:
+  - "feature-request"
+assignees:
+  - jaflesch
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thanks :heart: for taking the time to fill out this feature request report!**
+        
+        We kindly ask that you search to see if an issue [already exists](https://github.com/jaflesch/playground-ci/issues?q=is%3Aissue+sort%3Acreated-desc+) for your feature.
+
+        We are also happy to accept contributions from our users. For more details see [here](https://github.com/jaflesch/playground-ci/blob/master/CONTRIBUTING.md).
+
+  - type: dropdown
+    attributes:
+      multiple: false
+      label: Type of Feature
+      description: Select the type of feature request.
+      options:
+        - "✨ New Feature"
+        - "📝 Documentation"
+        - "🎨 Style and UI"
+        - "🔨 Code Refactor"
+        - "⚡ Performance Improvements"
+        - "✅ New Test"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        A clear and concise description of the feature you're interested in.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Which problem does this feature request solve?
+      description: |
+        Describe the solution you'd like. A clear and concise description of what you want to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: |
+        Give us some additional information about this feature request like suggested solutions, alternatives you've considered etc.
+    validations:
+      required: false
+
+  - type: dropdown
+    attributes:
+      label: Can you submit a Pull Request?
+      description: Select an option.
+      multiple: false
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: false
