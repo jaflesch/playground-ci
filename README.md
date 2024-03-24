@@ -3,19 +3,26 @@
     <img width="100%" src="https://i.imgur.com/SVvgxJF.png" alt="@jaflesch/tinder-autolike's">
   </a>
   <br>
+  <img alt="NPM Version" src="https://img.shields.io/npm/v/%40jaflesch%2Fts-pokeapi">
+
+  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jaflesch/ts-pokeapi/deploy.yml?branch=main">
+  <img alt="https://img.shields.io/npm/unpacked-size/%40jaflesch%2Fts-pokeapi" />
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jaflesch/ts-pokeapi?style=plastic">
+<br/>
+
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/jaflesch/ts-pokeapi">
+
   <a href="https://github.com/jaflesch/tinder-autolike/issues">
     <img src="https://img.shields.io/github/issues/jaflesch/tinder-autolike?color=0088ff&style=for-the-badge&logo=github" alt="@jaflesch/tinder-autolike's issues"/>
   </a>
   <a href="https://github.com/jaflesch/tinder-autolike/pulls">
     <img src="https://img.shields.io/github/issues-pr/jaflesch/tinder-autolike?color=0088ff&style=for-the-badge&logo=github" alt="@jaflesch/tinder-autolike's pull requests"/>
   </a>
-  <a href="https://github.com/jaflesch/tinder-autolike/generate">
-    <img src="https://img.shields.io/badge/use%20this-template-blue?logo=github-sponsors&style=for-the-badge&color=green" alt="@jaflesch/tinder-autolike link to create a new repository from the template">
-  </a>
-  <a href="https://github.com/jaflesch/tinder-autolike/actions/workflows/shelltest.yml">
-    <img src="https://github.com/jaflesch/tinder-autolike/actions/workflows/shelltest.yml/badge.svg" alt="@jaflesch/tinder-autolike's tests">
-  </a>
+
+
+
 </p>
+
 
 ---
 
