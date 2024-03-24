@@ -1,3 +1,5 @@
+todo :check https://badgen.net/github 
+
 <p align="center">
   <a href="https://github.com/jaflesch/tinder-autolike/generate">
     <img width="100%" src="https://i.imgur.com/SVvgxJF.png" alt="@jaflesch/tinder-autolike's">
@@ -7,7 +9,7 @@
 
   <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jaflesch/ts-pokeapi/deploy.yml?branch=main">
 
-  <img alt="https://img.shields.io/npm/unpacked-size/@jaflesch/ts-pokeapi" />
+  <img alt="NPM Unpacked size" src="https://img.shields.io/npm/unpacked-size/@jaflesch/ts-pokeapi" />
 <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/jaflesch/ts-pokeapi">
 
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jaflesch/ts-pokeapi?style=flat">
@@ -74,7 +76,7 @@ Thanks for these awesome resources that were used during the development of the 
 
 - <https://github.com/cookiecutter/cookiecutter>
 - <https://github.github.com/gfm/>
-
+- <https://github.com/Josee9988/project-template>
 
 ## Was the project helpful? Feel free help us raise these numbers up
 
