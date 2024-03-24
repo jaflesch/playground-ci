@@ -1,0 +1,40 @@
+name: ❓ Question
+description: Questions and requests for support.
+title: "[Question]: "
+labels:
+  - "question"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thanks for taking the time to fill out this question report!**
+        
+        Before you proceed, we kindly ask that you search to see if an [issue already exists](https://github.com/jaflesch/playground-ci/issues?q=is%3Aissue+sort%3Acreated-desc+) for your question.
+
+        If no issue was created for this question, fill the title of this issue with your question and give more details on following fields of this report.
+
+  - type: textarea
+    attributes:
+      label: What is your question?
+      description: |
+        A clear and descriptive text of your question
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: |
+        Give us some additional information about this question if needed.
+    validations:
+      required: false
+
+  - type: input
+    attributes:
+      label: Contact details
+      description: |
+        How we can get in touch with you if need more information?
+      placeholder: my.email@example.com
+    validations:
+      required: false

@@ -1,6 +1,6 @@
 blank_issues_enabled: false
 
 contact_links:
-  - name: Google
+  - name: An external link example...
     url: https://www.google.com/
-    about: Texting...
+    about: Get help using TS PokéAPI
