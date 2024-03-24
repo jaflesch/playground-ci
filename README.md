@@ -6,17 +6,19 @@
   <img alt="NPM Version" src="https://img.shields.io/npm/v/%40jaflesch%2Fts-pokeapi">
 
   <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jaflesch/ts-pokeapi/deploy.yml?branch=main">
-  <img alt="https://img.shields.io/npm/unpacked-size/%40jaflesch%2Fts-pokeapi" />
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jaflesch/ts-pokeapi?style=plastic">
-<br/>
 
+  <img alt="https://img.shields.io/npm/unpacked-size/@jaflesch/ts-pokeapi" />
 <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/jaflesch/ts-pokeapi">
 
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jaflesch/ts-pokeapi?style=flat">
+<br/>
+
+
   <a href="https://github.com/jaflesch/tinder-autolike/issues">
-    <img src="https://img.shields.io/github/issues/jaflesch/tinder-autolike?color=0088ff&style=for-the-badge&logo=github" alt="@jaflesch/tinder-autolike's issues"/>
+    <img src="https://img.shields.io/github/issues/jaflesch/tinder-autolike?color=0088ff&style=flat&logo=github" alt="@jaflesch/tinder-autolike's issues"/>
   </a>
   <a href="https://github.com/jaflesch/tinder-autolike/pulls">
-    <img src="https://img.shields.io/github/issues-pr/jaflesch/tinder-autolike?color=0088ff&style=for-the-badge&logo=github" alt="@jaflesch/tinder-autolike's pull requests"/>
+    <img src="https://img.shields.io/github/issues-pr/jaflesch/tinder-autolike?color=0088ff&style=flat&logo=github" alt="@jaflesch/tinder-autolike's pull requests"/>
   </a>
 
 
@@ -74,12 +76,14 @@ Thanks for these awesome resources that were used during the development of the 
 - <https://github.github.com/gfm/>
 
 
-## 🎉 Was the template helpful? Please help us raise these numbers up
+## Was the project helpful? Feel free help us raise these numbers up
 
+<p align="center">
 [![GitHub's followers](https://img.shields.io/github/followers/jaflesch.svg?style=social)](https://github.com/jaflesch)
 [![GitHub stars](https://img.shields.io/github/stars/jaflesch/tinder-autolike.svg?style=social)](https://github.com/jaflesch/tinder-autolike/stargazers)
 [![GitHub watchers](https://img.shields.io/github/watchers/jaflesch/tinder-autolike.svg?style=social)](https://github.com/jaflesch/tinder-autolike/watchers)
 [![GitHub forks](https://img.shields.io/github/forks/jaflesch/tinder-autolike.svg?style=social)](https://github.com/jaflesch/tinder-autolike/network/members)
+</p>
 
 Enjoy! 😃
 
