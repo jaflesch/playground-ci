@@ -2,6 +2,6 @@
 sidebar_position: 4
 ---
 
-# Pokémon
+# Location
 
 gg easy 10/10 locaton rocksa
