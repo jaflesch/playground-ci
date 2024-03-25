@@ -4,11 +4,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'TS PokéAPI',
-  tagline: 'A Pokémon TypeScript library :D',
+  tagline: 'A Pokémon TypeScript library :1',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://jaflesch.github.io',
+  url: 'https://github.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/playground-ci/',
@@ -16,7 +16,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'jaflesch', // Usually your GitHub org/user name.
-  projectName: 'ts-pokeapi', // Usually your repo name.
+  projectName: 'playground-ci', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
