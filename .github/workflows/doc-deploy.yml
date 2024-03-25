@@ -1,4 +1,4 @@
-name: Deploy Docusaurus
+name: Deploy Docusaurus v2
 
 on:
   workflow_dispatch:
