@@ -1,6 +1,10 @@
-name: Deploy Docusaurus v2
+name: Deploy Docusaurus v3
 
 on:
+  push:
+    branches:
+    - main
+
   workflow_dispatch:
 
 permissions:
@@ -15,12 +19,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 18 # Use Node.js 18 here
+          node-version: '20.x' # Use Node.js 18 here
 
       - name: Install dependencies
         run: npm install

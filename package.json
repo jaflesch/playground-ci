@@ -25,6 +25,7 @@
     "pokeapi",
     "typescript"
   ],
+  "precommit": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jaflesch/ts-pokeapi/issues"
