@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'TS PokéAPI',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'A Pokémon TypeScript library',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
