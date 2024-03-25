@@ -2,6 +2,6 @@
 sidebar_position: 3
 ---
 
-# Pokémon Stats
+# Region
 
-gg easy
+gg easy 10/10 region
