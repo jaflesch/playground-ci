@@ -1,7 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 ---
 
 # Types
 
-gg easy
+gg easy typesss
