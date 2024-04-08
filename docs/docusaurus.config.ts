@@ -46,7 +46,7 @@ const config: Config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         pages: {
-          remarkPlugins: [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          remarkPlugins: [require('@docusaurus/remark-plugin-npm2yarn')],
         },
         blog: {
           showReadingTime: true,
