@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[7071],{3549:e=>{e.exports=JSON.parse('{"title":"Guides","description":"Start here","slug":"/category/guides","permalink":"/playground-ci/docs/category/guides","navigation":{"next":{"title":"Getting started","permalink":"/playground-ci/docs/guides/getting-started"}}}')}}]);
