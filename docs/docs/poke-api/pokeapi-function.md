@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # pokeapi()
 
+```bash 
+npm install -- --version
+```
+
 The `pokeapi()` function is syntatic sugar for the `PokeApi` class. The function returns an instance of the class and allows chaining methods for fetching data in a procedural fashion. Both function and class shares the same methods and properties. The main diference is how they are invoked.
 
 ## Methods
