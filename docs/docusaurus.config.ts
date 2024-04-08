@@ -1,7 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-const remarkNpm2Yarn = require('@docusaurus/remark-plugin-npm2yarn');
+import remarkNpm2Yarn from '@docusaurus/remark-plugin-npm2yarn';
 
 const config: Config = {
   title: 'TS PokéAPI',
@@ -41,17 +41,17 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           remarkPlugins: [
-            [remarkNpm2Yarn],
+            [[remarkNpm2Yarn, { sync: true }]],
           ],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         pages: {
-          remarkPlugins: [remarkNpm2Yarn],
+          remarkPlugins: [[remarkNpm2Yarn, { sync: true }]],
         },
         blog: {
           showReadingTime: true,
-          remarkPlugins: [remarkNpm2Yarn],
+          remarkPlugins: [[remarkNpm2Yarn, { sync: true }]],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
