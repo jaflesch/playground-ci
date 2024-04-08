@@ -40,19 +40,19 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           remarkPlugins: [
-            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+            [require.resolve('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           ],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         pages: {
-          remarkPlugins: [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          remarkPlugins: [require.resolve('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
         },
         blog: {
           showReadingTime: true,
           remarkPlugins: [
             [
-              require('@docusaurus/remark-plugin-npm2yarn'),
+              require.resolve('@docusaurus/remark-plugin-npm2yarn'),
               {converters: ['pnpm']},
             ],
           ],
