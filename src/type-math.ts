@@ -115,21 +115,39 @@ export const mapTypeNameToId = (index: keyof typeof PokemonTypeId) => {
   return map[index];
 };
 
-export const getPokemonTypeMatchups = (pokemon: Pokemon) => {
+const damageAlterAbilities: AlterDamageAbility[] = [
+  'dry-skin',
+  'earth-eater',
+  'filter',
+  'flash-fire',
+  'fluffy',
+  'heatproof',
+  'levitate',
+  'lightning-rod',
+  'motor-drive',
+  'prism-armor',
+  'purifying-salt',
+  'sap-sipper',
+  'solid-rock',
+  'storm-drain',
+  'thick-fat',
+  'volt-absorb',
+  'water-absorb',
+  'water-bubble',
+  'well-baked-body',
+  'wind-rider',
+  'wonder-guard',
+];
+
+export const getPokemonTypeMatchups = (pokemon: Pokemon, verbose?: boolean) => {
   const types = pokemon.types.map((t) =>
     mapTypeIdToTypeIndex(getResourceIdFromURL(t.type.url)),
   );
 
   const offensive = [];
-  const defensive = Array(18).fill(1);
   const stabSuperEffective = new Map();
-
   for (const t of types) {
     offensive.push(TYPES_MATCHUP_MATRIX[t]);
-
-    for (let i = 0; i < defensive.length; i++) {
-      defensive[i] = TYPES_MATCHUP_MATRIX[i][t] * defensive[i];
-    }
 
     for (let i = 0; i < TYPES_MATCHUP_MATRIX.length; i++) {
       if (TYPES_MATCHUP_MATRIX[t][i] === 2) {
@@ -138,6 +156,74 @@ export const getPokemonTypeMatchups = (pokemon: Pokemon) => {
       }
     }
   }
+
+  const defensive = [];
+  const abilities = pokemon.abilities.map((a) => a.ability.name);
+
+  for (const ability of abilities) {
+    const abilityDefense = Array(18).fill(1);
+    for (const t of types) {
+      for (let i = 0; i < abilityDefense.length; i++) {
+        abilityDefense[i] *= TYPES_MATCHUP_MATRIX[i][t];
+
+        if (damageAlterAbilities.includes(ability as AlterDamageAbility)) {
+          abilityDefense[i] *= getMultipleByAbility(
+            i,
+            ability as AlterDamageAbility,
+          );
+          abilityDefense[i] *= getSuperEffectiveMultipleByAbility(
+            abilityDefense[i],
+            ability as AlterDamageAbility,
+          );
+        }
+      }
+    }
+    defensive.push(abilityDefense);
+  }
+  const breakdown = [];
+  for (const [i, v] of defensive.entries()) {
+    const noEffect = [];
+    const normal = [];
+    const weakness = [];
+    const resistance = [];
+    const doubleWeakness = [];
+    const doubleResistance = [];
+    for (const [index, value] of v.entries()) {
+      const typeResult = verbose ? mapTypeIndexToName(index) : index;
+      if (value === 0) {
+        noEffect.push(typeResult);
+      } else if (value > 0 && value < 0.5) {
+        doubleResistance.push(typeResult);
+      } else if (value >= 0.5 && value < 1) {
+        resistance.push(typeResult);
+      } else if (value === 1) {
+        normal.push(typeResult);
+      } else if (value > 1 && value <= 2) {
+        weakness.push(typeResult);
+      } else {
+        doubleWeakness.push(typeResult);
+      }
+    }
+
+    breakdown.push({
+      [abilities[i]]: {
+        noEffect,
+        normal,
+        weakness,
+        resistance,
+        doubleWeakness,
+        doubleResistance,
+      },
+    });
+  }
+
+  console.log('@@ DEFENSIVE DETAILS @@', JSON.stringify(breakdown));
+  return {
+    types,
+    offensive,
+    defensive: breakdown,
+    stabSuperEffective,
+  };
 
   console.log('@TYPES', types);
   console.log('@OFFENSIVE', offensive);
@@ -252,10 +338,7 @@ const getMultipleByAbility = (
   type: TypesIndex,
   ability: AlterDamageAbility,
 ) => {
-  const imu = isImmunityToDamage(type, ability);
-  console.log('@@@> IMU', imu);
-  if (imu) {
-    console.log('@@@ caiu aqui');
+  if (isImmunityToDamage(type, ability)) {
     return 0;
   }
 

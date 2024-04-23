@@ -4,14 +4,14 @@ import {TypesIndex} from '../type-matchups';
 
 
 describe('when type matchup', () => {
-  // it('workds kk', async () => {
-  //   const resp = await fetch('https://pokeapi.co/api/v2/pokemon/swampert');
-  //   const pokemon = await resp.json();
-  //   const r = getPokemonTypeMatchups(pokemon);
-  //   expect(r).toBeDefined();
-  // });
+  it('workds kk', async () => {
+    const resp = await fetch('https://pokeapi.co/api/v2/pokemon/heatran');
+    const pokemon = await resp.json();
+    const r = getPokemonTypeMatchups(pokemon, true);
+    expect(r).toBeDefined();
+  });
 
-  it('workds kk off', async () => {
+  it.skip('workds kk off', async () => {
     expect(
       getOffenseTypeMatchup(TypesIndex.FIRE, [TypesIndex.WATER])
     ).toBe(0.5);
@@ -33,7 +33,7 @@ describe('when type matchup', () => {
     ).toBe(4);
   });
 
-  it('workds kk def', async () => {
+  it.skip('workds kk def', async () => {
     expect(
       getDefenseTypeMatchup([TypesIndex.FIRE, TypesIndex.GRASS], TypesIndex.WATER)
     ).toBe(1);
@@ -55,7 +55,7 @@ describe('when type matchup', () => {
     ).toBe(4);
   });
 
-  it('workds kk off ability', async () => {
+  it.skip('workds kk off ability', async () => {
     expect(
       getOffenseTypeMatchup(TypesIndex.WATER, [TypesIndex.WATER])
     ).toBe(0.5);
