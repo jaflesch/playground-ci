@@ -155,13 +155,43 @@ export const getPokemonTypeMatchups = (pokemon: Pokemon) => {
   // console.log('@COMPLETE OFFENSIVE', completeTypeOffensive);
 };
 
+type AlterDamageAbility =
+  | 'dry-skin'
+  | 'earth-eater'
+  | 'filter'
+  | 'flash-fire'
+  | 'fluffy'
+  | 'heatproof'
+  | 'levitate'
+  | 'lightning-rod'
+  | 'motor-drive'
+  | 'prism-armor'
+  | 'purifying-salt'
+  | 'sap-sipper'
+  | 'solid-rock'
+  | 'storm-drain'
+  | 'thick-fat'
+  | 'volt-absorb'
+  | 'water-absorb'
+  | 'water-bubble'
+  | 'well-baked-body'
+  | 'wind-rider'
+  | 'wonder-guard';
+
 export const getOffenseTypeMatchup = (
-  userType: TypesIndex,
+  moveType: TypesIndex,
   targetTypes: TypesIndex[],
+  targetAbility?: AlterDamageAbility,
 ) => {
   let defensive = 1;
+
   for (const t of targetTypes) {
-    defensive *= TYPES_MATCHUP_MATRIX[userType][t];
+    defensive *= TYPES_MATCHUP_MATRIX[moveType][t];
+  }
+
+  if (targetAbility) {
+    defensive *= getMultipleByAbility(moveType, targetAbility);
+    defensive *= getSuperEffectiveMultipleByAbility(defensive, targetAbility);
   }
 
   return defensive;
@@ -169,12 +199,107 @@ export const getOffenseTypeMatchup = (
 
 export const getDefenseTypeMatchup = (
   userTypes: TypesIndex[],
-  targetType: TypesIndex,
+  moveType: TypesIndex,
+  userAbility?: AlterDamageAbility,
 ) => {
   let defensive = 1;
   for (const t of userTypes) {
-    defensive *= TYPES_MATCHUP_MATRIX[targetType][t];
+    defensive *= TYPES_MATCHUP_MATRIX[moveType][t];
   }
 
   return defensive;
+};
+
+// ----
+const isImmunityToDamage = (type: TypesIndex, ability: AlterDamageAbility) => {
+  // console.log('### IS IMMUNITY', type, ability);
+  if (
+    ['storm-drain', 'water-absorb', 'dry-skin'].includes(ability) &&
+    type === TypesIndex.WATER
+  ) {
+    return true;
+  }
+
+  if (
+    ['earth-eater', 'levitate'].includes(ability) &&
+    type === TypesIndex.GROUND
+  ) {
+    return true;
+  }
+
+  if (
+    ['flash-fire', 'well-baked-body'].includes(ability) &&
+    type === TypesIndex.FIRE
+  ) {
+    return true;
+  }
+
+  if (
+    ['motor-drive', 'volt-absorb', 'lightning-rod'].includes(ability) &&
+    type === TypesIndex.ELECTRIC
+  ) {
+    return true;
+  }
+  if (['sap-sipper'].includes(ability) && type === TypesIndex.GRASS) {
+    return true;
+  }
+  if (['wind-rider'].includes(ability) && type === TypesIndex.FLYING) {
+    return true;
+  }
+};
+
+const getMultipleByAbility = (
+  type: TypesIndex,
+  ability: AlterDamageAbility,
+) => {
+  const imu = isImmunityToDamage(type, ability);
+  console.log('@@@> IMU', imu);
+  if (imu) {
+    console.log('@@@ caiu aqui');
+    return 0;
+  }
+
+  if (ability === 'dry-skin' && type === TypesIndex.FIRE) {
+    return 1.25;
+  }
+  if (ability === 'fluffy' && type === TypesIndex.FIRE) {
+    return 2;
+  }
+  if (ability === 'heatproof' && type === TypesIndex.FIRE) {
+    return 0.5;
+  }
+  if (ability === 'heatproof' && type === TypesIndex.FIRE) {
+    return 0.5;
+  }
+  if (ability === 'purifying-salt' && type === TypesIndex.GHOST) {
+    return 0.5;
+  }
+  if (
+    ability === 'thick-fat' &&
+    (type === TypesIndex.FIRE || type === TypesIndex.ICE)
+  ) {
+    return 0.5;
+  }
+  if (ability === 'water-bubble' && type === TypesIndex.FIRE) {
+    return 0.5;
+  }
+  return 1;
+};
+
+const getSuperEffectiveMultipleByAbility = (
+  multiple: number,
+  ability: AlterDamageAbility,
+) => {
+  if (multiple >= 2) {
+    if (['prism-armor', 'solid-rock', 'filter'].includes(ability)) {
+      return 0.75;
+    }
+    return 1;
+  }
+
+  if (ability === 'wonder-guard') {
+    return multiple >= 2 ? 2 : 0;
+  }
+
+  return 1;
 };
