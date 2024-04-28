@@ -19,6 +19,29 @@ export enum TypesIndex {
   FAIRY,
 }
 
+export enum PokemonTypeId {
+  NORMAL = 1,
+  FIGHTING,
+  FLYING,
+  POISON,
+  GROUND,
+  ROCK,
+  BUG,
+  GHOST,
+  STEEL,
+  FIRE,
+  WATER,
+  GRASS,
+  ELECTRIC,
+  PSYCHIC,
+  ICE,
+  DRAGON,
+  DARK,
+  FAIRY,
+  UNKNOWN = 10001,
+  SHADOW,
+}
+
 export const TYPES_MATCHUP_MATRIX = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1, 1, 0.5, 1], // Normal
   [1, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1, 2, 1], // Fire
@@ -33,7 +56,7 @@ export const TYPES_MATCHUP_MATRIX = [
   [1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 0.5, 1, 1, 1, 1, 0, 0.5, 1], // Psychic
   [1, 0.5, 1, 1, 2, 1, 0.5, 0.5, 1, 0.5, 2, 1, 1, 0.5, 1, 2, 0.5, 0.5], // Bug
   [1, 2, 1, 1, 1, 2, 0.5, 1, 0.5, 2, 1, 2, 1, 1, 1, 1, 0.5, 1], // Rock
-  [0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 0.5, 1, 1], // Ghost
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 0.5, 1, 1], // Ghost
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 0.5, 0], // Dragon
   [1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 2, 1, 1, 2, 1, 0.5, 1, 0.5], // Dark
   [1, 0.5, 0.5, 0.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0.5, 2], // Steel
