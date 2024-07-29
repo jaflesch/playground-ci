@@ -44,3 +44,8 @@ table.full-width .upc {
   text-transform: uppercase;
   font-size: 0.9rem;
 }
+
+table.full-width p {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
