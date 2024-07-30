@@ -31,7 +31,7 @@ _We encourage you to keep the code coverage percentage at 80% and above._
 - [ ] No
 
 
-## ✅ Checklist
+## ✅ Checklisr
 
 - [ ] Have you followed the guidelines in our Contributing document?
 - [ ] Have you checked to ensure there aren't other open [Pull Requests](https://github.com/jaflesch/ts-pokeapi/pulls) for the same update/change?
