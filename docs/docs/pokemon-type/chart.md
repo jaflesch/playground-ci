@@ -11,12 +11,13 @@ See more on [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Stat).
 ::::
 
 ## Methods
-### getStatValue()
-Returns the Pokémon's final stat value regarding parameters sent
+
+### getPokemonTypeChartAttack()
+Returns types which given type's attack has no effet, is normal, not effective, and super effective. Also, returns an array of PokemonTypesArrayIndex with damage multiples for given type. See more about the `TYPES_CHART_MATRIX` at [PokemonDB](https://pokemondb.net/type). The index 0 stands for NORMAL type, index 1 stands for FIRE type etc.
 
 #### Signature
 ```typescript
-getStatValue(params: GetStatValueParams) => number
+getPokemonTypeChartAttack(index: PokemonTypesArrayIndex) => TypeChartReturn
 ```
 
 <table class="full-width">
@@ -30,110 +31,456 @@ getStatValue(params: GetStatValueParams) => number
   </thead>
   <tbody>
     <tr>
-      <td>`params`</td>
-      <td>[`GetStatValueParams`](#getstatvalueparams)</td>
+      <td>`index`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
       <td>Yes</td>
-      <td>
-      The general parameters used for Pokémon's stat calculation.
-      </td>
-    </tr>
-    <tr>
-      <td>`params.base`</td>
-      <td>`number`</td>
-      <td>Yes</td>
-      <td>
-      The Pokémon's base stat value (HP, Attack, Defense, Special Attack, Special Defense, or Speed).
-      </td>
-    </tr>
-    <tr>
-      <td>`params.ev`</td>
-      <td>`number`</td>
-      <td>No</td>
-      <td>
-      The Pokémon's Effort Value (EV) for given stat.
-      </td>
-    </tr>
-    <tr>
-      <td>`params.iv`</td>
-      <td>`number`</td>
-      <td>No</td>
-      <td>
-      The Pokémon's Individual Value (IV) for given stat.
-      </td>
-    </tr>
-    <tr>
-      <td>`params.isHp`</td>
-      <td>`boolean`</td>
-      <td>No</td>
-      <td>
-      True if evaluating HP stat value for given Pokémon.
-      </td>
-    </tr>
-    <tr>
-      <td>`params.level`</td>
-      <td>`number`</td>
-      <td>No</td>
-      <td>
-      The Pokémon's level.
-      </td>
-    </tr>
-    <tr>
-      <td>`params.nature`</td>
-      <td>[`NatureStatType`](#naturestattype)</td>
-      <td>No</td>
-      <td>
-      If the Pokémon has a hindering, neutral, or enhancing nature.
-      </td>
-    </tr>
-    <tr>
-      <td>`params.isShedinja`</td>
-      <td>`boolean`</td>
-      <td>No</td>
-      <td>
-      True if evaluating a stat for [Shedinja](https://bulbapedia.bulbagarden.net/wiki/Shedinja_(Pok%C3%A9mon))
-      </td>
+      <td>An index from Pokémon types chart matrix.</td>
     </tr>
   </tbody>
 </table>
 
 
 #### Returns
-A number with the Pokémon's final stat value.
+An object with complete type chart, and normal, no effect, super effective, not effective types against given type.
 
 #### Examples
 
 ```typescript
-getStatValue({
-  base: 100,
-  ev: 255,
-}); // outputs 328
-
-getStatValue({
-  base: 100,
-  ev: 255,
-  isHp: true,
-}); // outputs 404
-
-getStatValue({
-  base: 100,
-  iv: 0,
-  isHp: true,
-}); // outputs 310
-
-getStatValue({
-  base: 100,
-  isHp: true,
-  isShedinja: true,
-}); // outputs 1
+getPokemonTypeChartAttack(PokemonTypesArrayIndex.FIRE); // returns 328
 ```
 
+### getPokemonTypeChartAttackPros()
+Returns only types which given type's attack has super effective damage. See more about the `TYPES_CHART_MATRIX` at [PokemonDB](https://pokemondb.net/type). The index 0 stands for NORMAL type, index 1 stands for FIRE type etc.
+
+#### Signature
+```typescript
+getPokemonTypeChartAttackPros(index: PokemonTypesArrayIndex) => PokemonTypesArrayIndex[]
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`index`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>An index from Pokémon types chart matrix.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+An array of indexes from Pokémon types chart where given Pokémon type is super effective.
+
+#### Examples
+
+```typescript
+getPokemonTypeChartAttackPros(PokemonTypesArrayIndex.FIRE); // returns 328
+```
+
+
+### getPokemonTypeChartAttackCons()
+Returns only types which given type's attack has no effect or not effective damage. See more about the `TYPES_CHART_MATRIX` at [PokemonDB](https://pokemondb.net/type). The index 0 stands for NORMAL type, index 1 stands for FIRE type etc.
+
+#### Signature
+```typescript
+getPokemonTypeChartAttackCons(index: PokemonTypesArrayIndex) => TypeChartReturnDamageReduction
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`index`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>An index from Pokémon types chart matrix.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+An object with array of indexes from Pokémon types chart where given Pokémon type is not effective nor has effect.
+
+#### Examples
+
+```typescript
+getPokemonTypeChartAttackCons(PokemonTypesArrayIndex.FIRE); // returns 328
+```
+
+
+### getPokemonTypeChartDefense()
+Returns types which given type's defense has no effet, is normal, not effective, and super effective. Also, returns an array of PokemonTypesArrayIndex with damage multiples for given type. See more about the `TYPES_CHART_MATRIX` at [PokemonDB](https://pokemondb.net/type). The index 0 stands for NORMAL type, index 1 stands for FIRE type etc.
+
+#### Signature
+```typescript
+getPokemonTypeChartDefense(index: PokemonTypesArrayIndex) => TypeChartReturn
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`index`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>An index from Pokémon types chart matrix.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+An object with array of indexes from Pokémon types chart.
+
+#### Examples
+
+```typescript
+getPokemonTypeChartDefense(PokemonTypesArrayIndex.FIRE); // returns 328
+```
+
+
+### getPokemonTypeChartDefensePros()
+Returns only types which given type's defense has resistance. See more about the `TYPES_CHART_MATRIX` at [PokemonDB](https://pokemondb.net/type). The index 0 stands for NORMAL type, index 1 stands for FIRE type etc.
+
+#### Signature
+```typescript
+getPokemonTypeChartDefensePros(index: PokemonTypesArrayIndex) => TypeChartReturnDamageReduction
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`index`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>An index from Pokémon types chart matrix.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+An object with array of indexes from Pokémon types chart.
+
+#### Examples
+
+```typescript
+getPokemonTypeChartDefensePros(PokemonTypesArrayIndex.FIRE); // returns 328
+```
+
+
+### getPokemonTypeChartDefenseCons()
+Returns only types which given type's defense has weakness. See more about the `TYPES_CHART_MATRIX` at [PokemonDB](https://pokemondb.net/type). The index 0 stands for NORMAL type, index 1 stands for FIRE type etc.
+
+#### Signature
+```typescript
+getPokemonTypeChartDefenseCons(index: PokemonTypesArrayIndex) => PokemonTypesArrayIndex[]
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`index`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>An index from Pokémon types chart matrix.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+An object with array of indexes from Pokémon types chart.
+
+#### Examples
+
+```typescript
+getPokemonTypeChartDefenseCons(PokemonTypesArrayIndex.FIRE); // returns 328
+```
+
+
+### getAttackMultipleByTypeChart()
+Returns the damage multiplier considering the attacking move type, the targeted Pokémon types and ability.
+
+#### Signature
+```typescript
+getAttackMultipleByTypeChart(
+  moveType: PokemonTypesArrayIndex,
+  targetType: PokemonTypesArrayIndex[],
+  targetAbility?: AlterDamageAbility,
+) => number
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`moveType`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>The type of move that will produce the damage.</td>
+    </tr>
+    <tr>
+      <td>`targetTypes`</td>
+      <td>[`Array<PokemonTypesArrayIndex>`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>The types of target Pokémon which will receive the damage.</td>
+    </tr>
+    <tr>
+      <td>`targetAbility`</td>
+      <td>[`AlterDamageAbility`](../constants#alterdamageability)</td>
+      <td>No</td>
+      <td>A string of few selected abilities which affect damage calculation.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+The damage multiplier.
+
+#### Examples
+
+```typescript
+getAttackMultipleByTypeChart(
+  PokemonTypesArrayIndex.GROUND, 
+  [PokemonTypesArrayIndex.FIRE, PokemonTypesArrayIndex.ELECTRIC],
+  'levitate'
+); // returns 0
+```
+
+
+### getPokemonTypeMatchups()
+Returns a detailed offensive an defensive data from given PokéAPI Pokémon resource. It also returns the Pokémon types converted from Type resource id to `PokemonTypesArrayIndex`.
+
+#### Signature
+```typescript
+getAttackMultipleByTypeChart(pokemon: Pokemon, verbose?: boolean) => GetPokemonTypeMatchupsReturn
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`pokemon`</td>
+      <td>[`Pokemon`](../../poke-api/interfaces/pokemon#pokemon)</td>
+      <td>Yes</td>
+      <td>The PokéAPI Pokémon resource.</td>
+    </tr>
+    <tr>
+      <td>`verbose`</td>
+      <td>`boolean`</td>
+      <td>No</td>
+      <td>True if defensive data will return the type names instead of its indexes.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+An [`GetPokemonTypeMatchupsReturn`](#getpokemontypematchupsreturn) object with detailed offensive an defensive data.
+
+#### Examples
+
+```typescript
+const pokemon = pokeapi('charizard').get();
+getPokemonTypeMatchups(pokemon, true);
+```
+
+### isMoveNullifyByAbility()
+Returns true if ability is immune to type of given move; false otherwise.
+
+#### Signature
+```typescript
+isMoveNullifyByAbility(move: PokemonTypesArrayIndex, ability: AlterDamageAbility) => boolean
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`moveType`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>The type of attacking move.</td>
+    </tr>
+    <tr>
+      <td>`ability`</td>
+      <td>[`AlterDamageAbility`](../constants#alterdamageability)</td>
+      <td>Yes</td>
+      <td>A string of few selected abilities which affect damage calculation.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+A boolean with value true if ability receives no damage from given move type.
+
+#### Examples
+
+```typescript
+isMoveNullifyByAbility(PokemonTypesArrayIndex.WATER, 'storm-drain'); // returns true
+```
+
+
+### damageMultipleByAbility()
+Returns the damage multiple of attacking move by oponent's ability.
+
+#### Signature
+```typescript
+damageMultipleByAbility(move: PokemonTypesArrayIndex, ability: AlterDamageAbility) => number
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`moveType`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
+      <td>Yes</td>
+      <td>The type of attacking move.</td>
+    </tr>
+    <tr>
+      <td>`ability`</td>
+      <td>[`AlterDamageAbility`](../constants#alterdamageability)</td>
+      <td>Yes</td>
+      <td>A string of few selected abilities which affect damage calculation.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+The damage multiple.
+
+#### Examples
+
+```typescript
+damageMultipleByAbility(PokemonTypesArrayIndex.GHOST, 'purifying-salt'); // returns 0.5
+```
+
+
+### superEffectiveDamageMultipleByAbility()
+Returns the correct super effective damage multiple applied to a oponent's ability.
+
+#### Signature
+```typescript
+superEffectiveDamageMultipleByAbility(multiple: number, ability: AlterDamageAbility) => number
+```
+
+<table class="full-width">
+  <thead class="upc">
+    <tr>
+      <th width="15%">Parameter</th>
+      <th width="15%">Type</th>
+      <th width="15%">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`multiple`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The current damage multiplier.</td>
+    </tr>
+    <tr>
+      <td>`ability`</td>
+      <td>[`AlterDamageAbility`](../constants#alterdamageability)</td>
+      <td>Yes</td>
+      <td>A string of few selected abilities which affect damage calculation.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### Returns
+The super effective damage multiple.
+
+#### Examples
+
+```typescript
+superEffectiveDamageMultipleByAbility(0.5, 'wonder-guard'); // returns 0
+superEffectiveDamageMultipleByAbility(1, 'wonder-guard'); // returns 0
+superEffectiveDamageMultipleByAbility(2, 'wonder-guard'); // returns 2
+
+superEffectiveDamageMultipleByAbility(1, 'prism-armor'); // returns 1
+superEffectiveDamageMultipleByAbility(2, 'prism-armor'); // returns 0.75
+```
 
 
 ## Type Definitions
 
-### PokemonTypeName
-
-### GetStatValueParams
+### TypeChartReturn
 
 An interface to determine the Pokémon's final stat value with [`getStatValue()`](#getstatvalue).
 
@@ -161,46 +508,37 @@ An interface to determine the Pokémon's final stat value with [`getStatValue()`
   </thead>
   <tbody>
     <tr>
-      <td>`base`</td>
+      <td>`normal`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`iv`</td>
-      <td> No </td>
-      <td>`number`</td>
+      <td>`noEffect`</td>
+      <td> Yes </td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`ev`</td>
-      <td> No </td>
-      <td>`number`</td>
+      <td>`notEffective`</td>
+      <td> Yes </td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`level`</td>
-      <td> No </td>
-      <td>`number`</td>
+      <td>`superEffective`</td>
+      <td> Yes </td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`isHp`</td>
-      <td> No </td>
-      <td>`boolean`</td>
-    </tr>
-    <tr>
-      <td>`isShedinja`</td>
-      <td> No </td>
-      <td>`boolean`</td>
-    </tr>
-    <tr>
-      <td>`nature`</td>
-      <td> No </td>
-      <td>[`NatureStatType`](#naturestattype)</td>
+      <td>`chart`</td>
+      <td> Yes </td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
   </tbody>
 </table>
 
-### GetLegendsArceusStatValueParams
 
-An interface to determine the Pokémon's final stat value with [`getLegendsArceusStatValue()`](#getlegendsarceusstatvalue).
+### TypeChartReturnDamageReduction
+
+An interface to determine the Pokémon's final stat value with [`getStatValue()`](#getstatvalue).
 
 <table className='full-width'>
   <thead className='left upc'>
@@ -226,37 +564,22 @@ An interface to determine the Pokémon's final stat value with [`getLegendsArceu
   </thead>
   <tbody>
     <tr>
-      <td>`base`</td>
+      <td>`noEffect`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`level`</td>
-      <td> No </td>
-      <td>`number`</td>
-    </tr>
-    <tr>
-      <td>`effortLevel`</td>
-      <td> No </td>
-      <td>`number`</td>
-    </tr>
-    <tr>
-      <td>`isHp`</td>
-      <td> No </td>
-      <td>`boolean`</td>
-    </tr>
-    <tr>
-      <td>`nature`</td>
-      <td> No </td>
-      <td>[`NatureStatType`](#naturestattype)</td>
+      <td>`notEffective`</td>
+      <td> Yes </td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
   </tbody>
 </table>
 
 
-### GetLetsGoPikachuStatValueParams
+### GetPokemonTypeMatchupsReturn
 
-An interface to determine the Pokémon's final stat value with [`getLetsGoPikachuStatValue()`](#getletsgopikachustatvalue).
+An interface to determine the Pokémon's final stat value with [`getPokemonTypeMatchups()`](#getpokemontypematchups).
 
 <table className='full-width'>
   <thead className='left upc'>
@@ -282,150 +605,107 @@ An interface to determine the Pokémon's final stat value with [`getLetsGoPikach
   </thead>
   <tbody>
     <tr>
-      <td>`base`</td>
+      <td>`types`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`level`</td>
-      <td> No </td>
-      <td>`number`</td>
-    </tr>
-    <tr>
-      <td>`iv`</td>
-      <td> No </td>
-      <td>`number`</td>
-    </tr>
-    <tr>
-      <td>`av`</td>
-      <td> No </td>
-      <td>`number`</td>
-    </tr>
-    <tr>
-      <td>`friendship`</td>
-      <td> No </td>
-      <td>`number`</td>
-    </tr>
-    <tr>
-      <td>`isHp`</td>
-      <td> No </td>
-      <td>`boolean`</td>
-    </tr>
-    <tr>
-      <td>`nature`</td>
-      <td> No </td>
-      <td>[`NatureStatType`](#naturestattype)</td>
-    </tr>
-  </tbody>
-</table>
-
-
-### GetCPValueParams
-
-An interface to determine the Pokémon's Combat Power value with [`getCPValue()`](#getcpvalue).
-
-<table className='full-width'>
-  <thead className='left upc'>
-    <tr>
-      <th>Type</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Interface</td>
-      </tr>
-  </tbody>
-</table>
-
-#### Properties
-<table className='full-width'>
-  <thead className='left upc'>
-    <tr>
-      <th>Name</th>
-      <th>Required</th>
-      <th>Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`stat`</td>
+      <td>`offensive`</td>
       <td> Yes </td>
-      <td>`object`</td>
+      <td>`Array<object>`</td>
     </tr>
     <tr>
-      <td>`stat.hp`</td>
+      <td>`offensive.normal`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`stat.attack`</td>
+      <td>`offensive.noEffect`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`stat.defense`</td>
+      <td>`offensive.notEffective`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`stat.specialAttack`</td>
+      <td>`offensive.superEffective`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`stat.specialDefense`</td>
+      <td>`offensive.chart`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`stat.speed`</td>
+      <td>`offensive.typeIndex`</td>
       <td> Yes </td>
-      <td>`number`</td>
+      <td>[`PokemonTypesArrayIndex`](../constants#pokemontypesarrayindex)</td>
     </tr>
     <tr>
-      <td>`level`</td>
-      <td> No </td>
-      <td>`number`</td>
+      <td>`offensive.name`</td>
+      <td> Yes </td>
+      <td>`string`</td>
     </tr>
     <tr>
-      <td>`totalAv`</td>
-      <td> No </td>
-      <td>`number`</td>
+      <td>`defensive`</td>
+      <td> Yes </td>
+      <td>`Array<object>`</td>
     </tr>
-  </tbody>
-</table>
-
-### NatureStatType
-
-A string value describing how the Nature affects the stat.
-
-<table className='full-width'>
-  <thead className='left upc'>
     <tr>
-      <th>Type</th>
+      <td>`defensive.ability`</td>
+      <td> Yes </td>
+      <td>`string`</td>
     </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>enum(`'enhancing'`, `'hindering'`, `'neutral'`)</td>
-      </tr>
-  </tbody>
-</table>
-
-
-### StageMultiplier
-
-A number value representing the stat stage multiplier.
-
-<table className='full-width'>
-  <thead className='left upc'>
     <tr>
-      <th>Type</th>
+      <td>`defensive.normal`</td>
+      <td> Yes </td>
+      <td>
+        [`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex), or
+        [`Array<[PokemonTypeName]>`](../constants#pokemontypename)
+      </td>
     </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>enum(`-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `1`, `2`, `3`, `4`, `5`, `6`)</td>
-      </tr>
+    <tr>
+      <td>`defensive.noEffect`</td>
+      <td> Yes </td>
+      <td>
+        [`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex), or
+        [`Array<[PokemonTypeName]>`](../constants#pokemontypename)
+      </td>
+    </tr>
+    <tr>
+      <td>`defensive.weakness`</td>
+      <td> Yes </td>
+      <td>
+        [`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex), or
+        [`Array<[PokemonTypeName]>`](../constants#pokemontypename)
+      </td>
+    </tr>
+    <tr>
+      <td>`defensive.resistance`</td>
+      <td> Yes </td>
+      <td>
+        [`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex), or
+        [`Array<[PokemonTypeName]>`](../constants#pokemontypename)
+      </td>
+    </tr>
+    <tr>
+      <td>`defensive.doubleWeakness`</td>
+      <td> Yes </td>
+      <td>
+        [`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex), or
+        [`Array<[PokemonTypeName]>`](../constants#pokemontypename)
+      </td>
+    </tr>
+    <tr>
+      <td>`defensive.doubleResistance`</td>
+      <td> Yes </td>
+      <td>
+        [`Array<[PokemonTypesArrayIndex]>`](../constants#pokemontypesarrayindex), or
+        [`Array<[PokemonTypeName]>`](../constants#pokemontypename)
+      </td>
+    </tr>
   </tbody>
 </table>
