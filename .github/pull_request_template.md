@@ -31,7 +31,7 @@ _We encourage you to keep the code coverage percentage at 80% and above._
 - [ ] No
 
 
-## ✅ Checklistss
+## ✅ Checklists
 
 - [ ] Have you followed the guidelines in our Contributing document?
 - [ ] Have you checked to ensure there aren't other open [Pull Requests](https://github.com/jaflesch/ts-pokeapi/pulls) for the same update/change?
@@ -40,3 +40,4 @@ _We encourage you to keep the code coverage percentage at 80% and above._
 - [ ] Have you written new tests for your core changes, as applicable?
 - [ ] Have you successfully ran tests with your changes locally?
 - [ ] Does your submission pass tests?
+

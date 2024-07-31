@@ -1,8 +1,8 @@
 ---
-sidebar_position: 10
+sidebar_position: 3
 ---
 
-# Chart
+# Type Chart
 
 A stat refers to any of several parameters pertaining to Pokémon that can affect turn order, move success, and damage output during a battle. With exception to the HP stat, a Pokémon's stat can also be temporarily raised or lowered in stages during battle through various effects.
 
