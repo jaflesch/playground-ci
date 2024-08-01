@@ -4,7 +4,9 @@ sidebar_position: 2
 
 # Format
 
-...
+Pokémon Types's module format functions allows easy to use typing information across different data structures. 
+
+We provide helper functions to convert between indexes from `PokemonTypesArrayIndex` (number), enums from `PokemonTypeName` (string) and enums from `PokemonTypeId` (number), which is the value from PokéApi Pokémon Type resource's id value.
 
 ## Methods
 
