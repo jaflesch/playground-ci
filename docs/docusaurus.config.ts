@@ -78,11 +78,12 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        {to: '/docs/guides/getting-started', label: 'Guides', position: 'left'},
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: 'docs/poke-api/pokeapi-class',
+          label: 'API',
           position: 'left',
-          label: 'Documentation',
+          sidebarId: 'tutorialSidebar',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
