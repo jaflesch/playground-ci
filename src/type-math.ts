@@ -386,3 +386,5 @@ const getSuperEffectiveMultipleByAbility = (
 
   return 1;
 };
+
+const test = true;
