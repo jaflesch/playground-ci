@@ -4,8 +4,6 @@ sidebar_position: 9
 
 # Pokémon
 
-gg easy 10/10
-
 ## Pokemon
 
 Pokémon are the creatures that inhabit the world of the Pokémon games. They can be caught using Pokéballs and trained by battling with other Pokémon. Each Pokémon belongs to a specific species but may take on a variant which makes it differ from other Pokémon of the same species, such as base stats, available abilities and typings. See [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_(species)) for greater detail.
@@ -934,8 +932,101 @@ Natures influence how a Pokémon's stats grow. See [Bulbapedia](http://bulbapedi
 </table>
 
 ## PokeAthlonStat
-aaa
-### to do
+
+Pokeathlon Stats are different attributes of a Pokémon's performance in Pokéathlons. In Pokéathlons, competitions happen on different courses; one for each of the different Pokéathlon stats. See [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9athlon) for greater detail.
+
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`id`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The identifier for this resource.</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The name for this resource.</td>
+    </tr>
+    <tr>
+      <td>`names`</td>
+      <td>[`Name`](../utils#name)</td>
+      <td>Yes</td>
+      <td>The name of this resource listed in different languages.</td>
+    </tr>
+    <tr>
+      <td>`affecting_natures`</td>
+      <td>[`NaturePokeathlonStatAffectSets`](#naturepokeathlonstataffectsets)</td>
+      <td>Yes</td>
+      <td>A detail of natures which affect this Pokéathlon stat positively or negatively.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### NaturePokeathlonStatAffectSets
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`increase`</td>
+      <td>[`NaturePokeathlonStatAffect`](#naturepokeathlonstataffect)</td>
+      <td>Yes</td>
+      <td>A list of natures and how they change the referenced Pokéathlon stat.</td>
+    </tr>
+    <tr>
+      <td>`decrease`</td>
+      <td>[`NaturePokeathlonStatAffect`](#naturepokeathlonstataffect)</td>
+      <td>Yes</td>
+      <td>A list of natures and how they change the referenced Pokéathlon stat.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### NaturePokeathlonStatAffect
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`max_change`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The maximum amount of change to the referenced Pokéathlon stat.</td>
+    </tr>
+    <tr>
+      <td>`nature`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The nature causing the change.</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## PokemonColor
 
@@ -979,12 +1070,172 @@ Colors used for sorting Pokémon in a Pokédex. The color listed in the Pokédex
 </table>
 
 ## PokemonForm
+Some Pokémon may appear in one of multiple, visually different forms. These differences are purely cosmetic. For variations within a Pokémon species, which do differ in more than just visuals, the 'Pokémon' entity is used to represent such a variety.
 
-aa
-### to do
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`id`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The identifier for this resource.</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The name for this resource.</td>
+    </tr>
+    <tr>
+      <td>`order`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The order in which forms should be sorted within all forms. Multiple forms may have equal order, in which case they should fall back on sorting by name.</td>
+    </tr>
+    <tr>
+      <td>`form_order`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The order in which forms should be sorted within a species' forms.</td>
+    </tr>
+    <tr>
+      <td>`is_default`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>True for exactly one form used as the default for each Pokémon.</td>
+    </tr>
+    <tr>
+      <td>`is_battle_only`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this form can only happen during battle.</td>
+    </tr>
+    <tr>
+      <td>`is_mega`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this form requires mega evolution.</td>
+    </tr>
+    <tr>
+      <td>`form_name`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The name of this form.</td>
+    </tr>
+    <tr>
+      <td>`pokemon`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The Pokémon that can take on this form.</td>
+    </tr>
+    <tr>
+      <td>`types`</td>
+      <td>[`Array<PokemonFormType>`](#pokemonformtype)</td>
+      <td>Yes</td>
+      <td>A list of details showing types this Pokémon form has.</td>
+    </tr>
+    <tr>
+      <td>`sprites`</td>
+      <td>[`PokemonFormSprites`](#pokemonformsprites)</td>
+      <td>Yes</td>
+      <td>A list of details showing types this Pokémon form has.</td>
+    </tr>
+    <tr>
+      <td>`names`</td>
+      <td>[`Name`](../utils#name)</td>
+      <td>Yes</td>
+      <td>The form specific full name of this Pokémon form, or empty if the form does not have a specific name.</td>
+    </tr>
+    <tr>
+      <td>`form_names`</td>
+      <td>[`Name`](../utils#name)</td>
+      <td>Yes</td>
+      <td>The form specific form name of this Pokémon form, or empty if the form does not have a specific name.</td>
+    </tr>
+    <tr>
+      <td>`version_group`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The version group this Pokémon form was introduced in.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### PokemonFormType
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`slot`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The order the Pokémon's types are listed in.</td>
+    </tr>
+    <tr>
+      <td>`type`</td>
+      <td>[`<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The type the referenced Form has.</td>
+    </tr>
+  </tbody>
+</table>
+
+### PokemonFormSprites
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`front_default`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The default depiction of this Pokémon form from the front in battle.</td>
+    </tr>
+    <tr>
+      <td>`back_default`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The default depiction of this Pokémon form from the back in battle</td>
+    </tr>
+    <tr>
+      <td>`front_shiny`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The shiny depiction of this Pokémon form from the front in battle.
+      .</td>
+    </tr>
+    <tr>
+      <td>`back_shiny`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The shiny depiction of this Pokémon form from the back in battle.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## PokemonHabitat
-
 Habitats are generally different terrain Pokémon can be found in but can also be areas designated for rare or legendary Pokémon.
 
 <table className='full-width'>
@@ -1025,12 +1276,34 @@ Habitats are generally different terrain Pokémon can be found in but can also b
 </table>
 
 ## PokemonLocationArea
+Pokémon Location Areas are ares where Pokémon can be found.
 
-aa
-### to do
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`location_area`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The location area the referenced Pokémon can be encountered in.</td>
+    </tr>
+    <tr>
+      <td>`version_details`</td>
+      <td>[`Array<VersionEncounterDetail>`](../utils#versionencounterdetail)</td>
+      <td>Yes</td>
+      <td>A list of versions and encounters with the referenced Pokémon that might happen.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## PokemonShape
-
 Shapes used for sorting Pokémon in a Pokédex.
 
 <table className='full-width'>
@@ -1104,16 +1377,615 @@ Shapes used for sorting Pokémon in a Pokédex.
 </table>
 
 ## PokemonSpecie
+A Pokémon Species forms the basis for at least one Pokémon. Attributes of a Pokémon species are shared across all varieties of Pokémon within the species. A good example is [Wormadam](https://bulbapedia.bulbagarden.net/wiki/Wormadam_(Pok%C3%A9mon)); Wormadam is the species which can be found in three different varieties, Wormadam-Trash, Wormadam-Sandy and Wormadam-Plant.
 
-aa
-### to do
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`id`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The identifier for this resource.</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The name for this resource.</td>
+    </tr>
+    <tr>
+      <td>`order`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The order in which species should be sorted. Based on National Dex order, except families are grouped together and sorted by stage.</td>
+    </tr>
+    <tr>
+      <td>`gender_rate`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The chance of this Pokémon being female, in eighths; or -1 for genderless.</td>
+    </tr>
+    <tr>
+      <td>`capture_rate`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The happiness when caught by a normal Pokéball; up to 255. The higher the number, the happier the Pokémon.</td>
+    </tr>
+    <tr>
+      <td>`base_happiness`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>A detail of natures which affect this stat positively or negatively.</td>
+    </tr>
+    <tr>
+      <td>`is_baby`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this is a baby Pokémon.</td>
+    </tr>
+    <tr>
+      <td>`is_legendary`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this is a legendary Pokémon.</td>
+    </tr>
+    <tr>
+      <td>`is_mythical`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this is a mythical Pokémon.</td>
+    </tr>
+    <tr>
+      <td>`hatch_counter`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>One must walk 255 × (hatch_counter + 1) steps before this Pokémon's egg hatches, unless utilizing bonuses like Flame Body's.</td>
+    </tr>
+    <tr>
+      <td>`has_gender_differences`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this Pokémon has visual gender differences.</td>
+    </tr>
+    <tr>
+      <td>`forms_switchable`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether or not this Pokémon has multiple forms and can switch between them.</td>
+    </tr>
+    <tr>
+      <td>`growth_rate`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The rate at which this Pokémon species gains levels.</td>
+    </tr>
+    <tr>
+      <td>`pokedex_numbers`</td>
+      <td>[`Array<PokemonSpecieDexEntry>`](#pokemonspeciedexentry)</td>
+      <td>Yes</td>
+      <td>A list of Pokedexes and the indexes reserved within them for this Pokémon species.</td>
+    </tr>
+    <tr>
+      <td>`egg_groups`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of egg groups this Pokémon species is a member of.</td>
+    </tr>
+    <tr>
+      <td>`color`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The color of this Pokémon for Pokédex search.</td>
+    </tr>
+    <tr>
+      <td>`shape`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The shape of this Pokémon for Pokédex search.</td>
+    </tr>
+    <tr>
+      <td>`evolves_from_species`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The Pokémon species that evolves into this Pokemon_species.</td>
+    </tr>
+    <tr>
+      <td>`evolution_chain`</td>
+      <td>[`APIResource`](../utils#apiresource)</td>
+      <td>Yes</td>
+      <td>The evolution chain this Pokémon species is a member of.</td>
+    </tr>
+    <tr>
+      <td>`habitat`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The habitat this Pokémon species can be encountered in.</td>
+    </tr>
+    <tr>
+      <td>`generation`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The generation this Pokémon species was introduced in.</td>
+    </tr>
+    <tr>
+      <td>`names`</td>
+      <td>[`Array<Name>`](../utils#name)</td>
+      <td>Yes</td>
+      <td>The name of this resource listed in different languages.</td>
+    </tr>
+    <tr>
+      <td>`pal_park_encounters`</td>
+      <td>[`PalParkEncounterArea`](#palparkencounterarea)</td>
+      <td>Yes</td>
+      <td>A list of encounters that can be had with this Pokémon species in pal park.</td>
+    </tr>
+    <tr>
+      <td>`flavor_text_entries`</td>
+      <td>[`Array<FlavorText>`](../utils#flavortext)</td>
+      <td>Yes</td>
+      <td>A list of flavor text entries for this Pokémon species.</td>
+    </tr>
+    <tr>
+      <td>`forms_descriptions`</td>
+      <td>[`Array<Description>`](../utils#description)</td>
+      <td>Yes</td>
+      <td>Descriptions of different forms Pokémon take on within the Pokémon species.</td>
+    </tr>
+    <tr>
+      <td>`genera`</td>
+      <td>[`Genus`](#genus)</td>
+      <td>Yes</td>
+      <td>The genus of this Pokémon species listed in multiple languages.</td>
+    </tr>
+    <tr>
+      <td>`varieties`</td>
+      <td>[`PokemonSpecieVariety`](#pokemonspecievariety)</td>
+      <td>Yes</td>
+      <td>A list of the Pokémon that exist within this Pokémon species.</td>
+    </tr>
+  </tbody>
+</table>
+
+### PokemonSpecieDexEntry
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`entry_number`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The index number within the Pokédex.</td>
+    </tr>
+    <tr>
+      <td>`pokedex`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The Pokédex the referenced Pokémon species can be found in.</td>
+    </tr>
+  </tbody>
+</table>
+
+### PalParkEncounterArea
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`rate`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The base rate for encountering the referenced Pokémon in this pal park area.</td>
+    </tr>
+    <tr>
+      <td>`base_score`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The base score given to the player when the referenced Pokémon is caught during a pal park run.</td>
+    </tr>
+    <tr>
+      <td>`area`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The pal park area where this encounter happens.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Genus
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`genus`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The localized genus for the referenced Pokémon species.</td>
+    </tr>
+    <tr>
+      <td>`language`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The language this genus is in.</td>
+    </tr>
+  </tbody>
+</table>
+
+### PokemonSpecieVariety
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`is_default`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether this variety is the default variety.</td>
+    </tr>
+    <tr>
+      <td>`pokemon`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The Pokémon variety.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## PokemonStat
+Stats determine certain aspects of battles. Each Pokémon has a value for each stat which grows as they gain levels and can be altered momentarily by effects in battles.
 
-aa
-### to do
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`id`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The identifier for this resource.</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The name for this resource.</td>
+    </tr>
+    <tr>
+      <td>`names`</td>
+      <td>[`Name`](../utils#name)</td>
+      <td>Yes</td>
+      <td>The name of this resource listed in different languages.</td>
+    </tr>
+    <tr>
+      <td>`game_index`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>ID the games use for this stat.</td>
+    </tr>
+    <tr>
+      <td>`is_battle_only`</td>
+      <td>`boolean`</td>
+      <td>Yes</td>
+      <td>Whether this stat only exists within a battle.</td>
+    </tr>
+    <tr>
+      <td>`affecting_moves`</td>
+      <td>[`MoveStatAffectSet`](#movestataffectset)</td>
+      <td>Yes</td>
+      <td>A detail of moves which affect this stat positively or negatively.</td>
+    </tr>
+    <tr>
+      <td>`affecting_natures`</td>
+      <td>[`NatureStatAffectSet`](#naturestataffectset)</td>
+      <td>Yes</td>
+      <td>A detail of natures which affect this stat positively or negatively.</td>
+    </tr>
+    <tr>
+      <td>`characteristics`</td>
+      <td>[`APIResource`](../utils#apiresource)</td>
+      <td>Yes</td>
+      <td>A list of characteristics that are set on a Pokémon when its highest base stat is this stat.</td>
+    </tr>
+    <tr>
+      <td>`move_damage_class`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The class of damage this stat is directly related to.</td>
+    </tr>
+  </tbody>
+</table>
+
+### MoveStatAffectSet
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`increase`</td>
+      <td>[`Array<MoveStatAffect>`](#movestataffect)</td>
+      <td>Yes</td>
+      <td>A list of moves and how they change the referenced stat.</td>
+    </tr>
+    <tr>
+      <td>`decrease`</td>
+      <td>[`Array<MoveStatAffect>`](#movestataffect)</td>
+      <td>Yes</td>
+      <td>A list of moves and how they change the referenced stat.</td>
+    </tr>
+  </tbody>
+</table>
+
+### MoveStatAffect
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`change`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The maximum amount of change to the referenced stat.</td>
+    </tr>
+    <tr>
+      <td>`move`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The move causing the change.</td>
+    </tr>
+  </tbody>
+</table>
+
+### NatureStatAffectSet
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`increase`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of natures and how they change the referenced stat.</td>
+    </tr>
+    <tr>
+      <td>`decrease`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of nature sand how they change the referenced stat.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## PokemonType
+Types are properties for Pokémon and their moves. Each type has three properties: which types of Pokémon it is super effective against, which types of Pokémon it is not very effective against, and which types of Pokémon it is completely ineffective against.
 
-aa
-### to do
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`id`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The identifier for this resource.</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>`string`</td>
+      <td>Yes</td>
+      <td>The name for this resource.</td>
+    </tr>
+    <tr>
+      <td>`damage_relations`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>A detail of how effective this type is toward others and vice versa.</td>
+    </tr>
+    <tr>
+      <td>`past_damage_relations`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>A list of details of how effective this type was toward others and vice versa in previous generations.</td>
+    </tr>
+    <tr>
+      <td>`game_indices`</td>
+      <td>[`Array<GenerationGameIndex>`](../utils#generationgameindex)</td>
+      <td>Yes</td>
+      <td>A list of game indices relevent to this item by generation.</td>
+    </tr>
+    <tr>
+      <td>`generation`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The generation this type was introduced in.</td>
+    </tr>
+    <tr>
+      <td>`move_damage_class`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The class of damage inflicted by this type.</td>
+    </tr>
+    <tr>
+      <td>`names`</td>
+      <td>[`Array<Name>`](../utils#name)</td>
+      <td>Yes</td>
+      <td>The name of this resource listed in different languages.</td>
+    </tr>
+    <tr>
+      <td>`pokemon`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of details of Pokémon that have this type.</td>
+    </tr>
+    <tr>
+      <td>`moves`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of moves that have this type.</td>
+    </tr>
+  </tbody>
+</table>
+
+### TypePokemon
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`slot`</td>
+      <td>`number`</td>
+      <td>Yes</td>
+      <td>The order the Pokémon's types are listed in.</td>
+    </tr>
+    <tr>
+      <td>`pokemon`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The Pokémon that has the referenced type.</td>
+    </tr>
+  </tbody>
+</table>
+
+### TypeRelations
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`no_damage_to`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of types this type has no effect on.</td>
+    </tr>
+    <tr>
+      <td>`half_damage_to`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of types this type is not very effect against.</td>
+    </tr>
+    <tr>
+      <td>`double_damage_to`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of types this type is very effect against.</td>
+    </tr>
+    <tr>
+      <td>`no_damage_from`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of types that have no effect on this type.</td>
+    </tr>
+    <tr>
+      <td>`half_damage_from`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of types that are not very effective against this type.</td>
+    </tr>
+    <tr>
+      <td>`double_damage_from`</td>
+      <td>[`Array<NamedAPIResource>`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>A list of types that are very effective against this type.</td>
+    </tr>
+  </tbody>
+</table>
+
+### TypeRelationsPast
+<table className='full-width'>
+  <thead className='left upc'>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`generation`</td>
+      <td>[`NamedAPIResource`](../utils#namedapiresource)</td>
+      <td>Yes</td>
+      <td>The last generation in which the referenced type had the listed damage relations.</td>
+    </tr>
+    <tr>
+      <td>`no_damage_from`</td>
+      <td>[`TypeRelations`](#typerelations)</td>
+      <td>Yes</td>
+      <td>The damage relations the referenced type had up to and including the listed generation.</td>
+    </tr>
+  </tbody>
+</table>
