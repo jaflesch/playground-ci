@@ -49,3 +49,17 @@ table.full-width p {
   margin-bottom: 0;
   vertical-align: middle;
 }
+
+.footer__copyright {
+  position: absolute;
+  right: 0;
+  left: 0;
+  background: black;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+[data-theme='dark'] .footer__copyright {
+  background: #fafafa;
+  color: black;
+}

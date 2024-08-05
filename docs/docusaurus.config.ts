@@ -100,43 +100,60 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Getting Started',
+              to: '/docs/intro',
+            },
+            {
+              label: 'PokéAPI',
+              to: '/docs/intro',
+            },
+            {
+              label: 'Contributing',
               to: '/docs/intro',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Support',
           items: [
             {
-              label: 'Stack Overflow',
+              label: 'Report a bug',
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
             {
-              label: 'Discord',
+              label: 'Request a feature',
               href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Social',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'GitHub',
+              href: 'https://github.com/jaflesch',
             },
             {
-              label: 'GitHub',
+              label: 'Linkedin',
+              href: 'https://github.com/facebook/docusaurus',
+            },
+          ],
+        },
+        {
+          title: 'Built with',
+          items: [
+            {
+              label: 'Docusaurus',
+              href: 'https://github.com/facebook/docusaurus',
+            },
+            {
+              label: 'GitHub Pages',
               href: 'https://github.com/facebook/docusaurus',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © 2023-${new Date().getFullYear()} Jean Flesch`,
     },
     prism: {
       theme: prismThemes.github,
