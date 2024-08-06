@@ -69,7 +69,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'TS PokéAPI',
@@ -92,6 +91,11 @@ const config: Config = {
           position: 'right',
         },
       ],
+    },
+    algolia: {
+      appId: 'R6ZALKEMRJ',
+      apiKey: '9aecbe381369d5e0f7c8590f7e479242',
+      indexName: 'jafleschio',
     },
     footer: {
       style: 'dark',
