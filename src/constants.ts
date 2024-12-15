@@ -17,4 +17,4 @@ export const MIN_AWAKENING_VALUE = 0;
 export const MAX_AWAKENING_VALUE = 200;
 
 export const MIN_FRIENDSHIP_VALUE = 0;
-export const MAX_FRIENDSHIP_VALUE = 255;
+export const MAX_FRIENDSHIP_VALUE = 25500;
